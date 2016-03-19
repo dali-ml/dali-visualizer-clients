@@ -193,7 +193,7 @@ namespace dali {
 
                 void register_function(std::string name,  function_t lambda);
 
-                Visualizer(std::string name, std::string hostname, int port);
+                Visualizer(std::string name, std::string hostname="127.0.0.1", int port=6397);
                 ~Visualizer();
 
                 void feed(const json11::Json& obj);
