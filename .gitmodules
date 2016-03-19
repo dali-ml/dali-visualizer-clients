@@ -1,0 +1,9 @@
+[submodule "cpp/third_party/redox"]
+	path = cpp/third_party/redox
+	url = https://github.com/JonathanRaiman/redox.git
+[submodule "cpp/third_party/json11"]
+	path = cpp/third_party/json11
+	url = https://github.com/nivwusquorum/json11.git
+[submodule "cpp/third_party/sole"]
+	path = cpp/third_party/sole
+	url = https://github.com/r-lyeh/sole.git
