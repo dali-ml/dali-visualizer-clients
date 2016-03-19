@@ -32,6 +32,28 @@ if(DALI_CORE_LIBRARIES)
     list(APPEND DALI_LIBRARIES ${DALI_CORE_LIBRARIES})
     message("-- Found Dali: " ${DALI_CORE_LIBRARIES})
     set(DALI_FOUND TRUE)
+
+    IF (APPLE)
+        # Apple has trouble static linking, and this is the remedy:
+        find_library(DALI_CUDA_LIBRARIES dali_cuda)
+
+        IF (DALI_CUDA_LIBRARIES)
+
+            # Cuda is missing?
+            list(APPEND DALI_LIBRARIES ${DALI_CUDA_LIBRARIES})
+
+            IF (CUDA_FOUND STREQUAL TRUE)
+                list(APPEND DALI_LIBRARIES ${CUDA_curand_LIBRARIES})
+                list(APPEND DALI_LIBRARIES ${CUDA_CUBLAS_LIBRARIES})
+                list(APPEND DALI_LIBRARIES ${CUDA_LIBRARIES})
+            ENDIF (CUDA_FOUND STREQUAL TRUE)
+
+        ENDIF (DALI_CUDA_LIBRARIES)
+
+        # BLAS not found:
+        list(APPEND DALI_LIBRARIES openblas)
+    ENDIF (APPLE)
+
 else(DALI_CORE_LIBRARIES)
     if(Dali_FIND_QUIETLY)
         message(STATUS "Failed to find Dali   " ${REASON_MSG} ${ARGN})
