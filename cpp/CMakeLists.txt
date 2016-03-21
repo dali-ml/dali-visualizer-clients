@@ -29,7 +29,7 @@ list(APPEND DaliVisualizerSources "${PROJECT_SOURCE_DIR}/third_party/sole/sole.c
 include_directories(${PROJECT_SOURCE_DIR})
 
 add_library(dali_visualizer SHARED ${DaliVisualizerSources} ${DaliVisualizerHeaders})
-target_link_libraries(dali_visualizer json11static ${DALI_LIBRARIES} redox_static ${HIREDIS_LIBRARIES})
+target_link_libraries(dali_visualizer json11static ${DALI_LIBRARIES} openblas redox_static ${HIREDIS_LIBRARIES})
 
 INSTALL(TARGETS dali_visualizer DESTINATION lib)
 install(DIRECTORY ${PROJECT_SOURCE_DIR}/dali_visualizer  DESTINATION include
